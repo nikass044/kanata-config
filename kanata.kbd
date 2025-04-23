@@ -39,7 +39,7 @@
 )
 
 (deflayer navlayer
-                  up
-  _ _ _ _ _ left down right _
+                     up
+  lrld _ _ _ _ left down right _
   spc
 )
