@@ -29,14 +29,14 @@
   arr (tap-hold $tt $ht spc (layer-while-held arrows))
   
   ;; tap-hold actions
-  a (tap-hold-release $tt $ht a lctl)
-  s (tap-hold-release $tt $ht s lsft)
+  a (tap-hold-release $tt $ht a lsft)
+  s (tap-hold-release $tt $ht s lctl)
   d (tap-hold-release $tt $ht d lalt)
   f (tap-hold-release $tt $ht f lmet)
   j (tap-hold-release $tt $ht j rmet)
   k (tap-hold-release $tt $ht k ralt)
-  l (tap-hold-release $tt $ht l rsft)
-  ; (tap-hold-release $tt $ht ; rctl)
+  l (tap-hold-release $tt $ht l rctl)
+  ; (tap-hold-release $tt $ht ; rsft)
 
   ;; tap-dance
   tdg (tap-dance $tt (g (macro lsft 100 lsft)))
