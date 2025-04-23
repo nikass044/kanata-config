@@ -26,34 +26,37 @@
 
   ;; layer switching
   grl (tap-hold-release $ht $ht grv @lay)
-  escctrl (tap-hold 100 100 esc esc)
   arr (tap-hold $tt $ht spc (layer-while-held arrows))
   
   ;; tap-hold actions
-  a (tap-hold $tt $ht a lctl)
-  s (tap-hold $tt $ht s lsft)
-  d (tap-hold $tt $ht d lalt)
-  f (tap-hold $tt $ht f lmet)
-  j (tap-hold $tt $ht j rmet)
-  k (tap-hold $tt $ht k ralt)
-  l (tap-hold $tt $ht l rsft)
-  ; (tap-hold $tt $ht ; rctl)
+  a (tap-hold-release $tt $ht a lctl)
+  s (tap-hold-release $tt $ht s lsft)
+  d (tap-hold-release $tt $ht d lalt)
+  f (tap-hold-release $tt $ht f lmet)
+  j (tap-hold-release $tt $ht j rmet)
+  k (tap-hold-release $tt $ht k ralt)
+  l (tap-hold-release $tt $ht l rsft)
+  ; (tap-hold-release $tt $ht ; rctl)
+
+  ;; tap-dance
+  tdg (tap-dance $tt (g (macro lsft 100 lsft)))
+  tdh (tap-dance $tt (h (macro rsft 100 rsft)))
   
 )
 
 (deflayer typing
-  @grl      1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab       q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @escctrl  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  @a   @s   @d   @f   @tdg @tdh @j   @k   @l   @;   '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lalt lmet           @arr           rmet ralt rctl
 )
 
 (deflayer playing
-  @grl      2    2    2    2    5    6    7    8    9    0    -    =    bspc
-  tab       q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @escctrl  a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  @grl 2    2    2    2    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lalt lmet           spc            rmet ralt rctl
 )
 
