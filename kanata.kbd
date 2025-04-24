@@ -13,8 +13,10 @@
 (defvar
   tap-time 150
   hold-time 200
+  shift-tap-delay 100
   tt $tap-time
   ht $hold-time
+  std $shift-tap-delay
 )
 
 (defalias
@@ -40,8 +42,8 @@
   ; (tap-hold-release $tt $ht ; rsft)
 
   ;; tap-dance
-  tdg (tap-dance $tt (g (macro lsft 100 lsft)))
-  tdh (tap-dance $tt (h (macro rsft 100 rsft)))
+  tdg (tap-dance $tt (g (macro lsft $std lsft)))
+  tdh (tap-dance $tt (h (macro rsft $std rsft)))
   
 )
 
