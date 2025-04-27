@@ -11,7 +11,7 @@
 )
 
 (defvar
-  tap-time 25
+  tap-time 35
   hold-time 200
   tap-dance-time 200
   shift-tap-delay 100
@@ -34,7 +34,7 @@
   arr (tap-hold $tt $ht spc (layer-while-held arrows))
   
   ;; tap-hold actions
-  z (tap-hold-press $tt $ht z (layer-while-held del))
+  z (tap-hold-press $tt $ht z (layer-while-held shrink))
   a (tap-hold $tt $ht a lsft)
   s (tap-hold-release $tt $ht s lctl)
   d (tap-hold-release $tt $ht d lalt)
@@ -43,14 +43,15 @@
   k (tap-hold-release $tt $ht k ralt)
   l (tap-hold-release $tt $ht l rctl)
   ; (tap-hold $tt $ht ; rsft)
+  fs (tap-hold-press $tt $ht / (layer-while-held shrink))
 
 )
 
 (deflayer typing
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  lsft @z   x    c    v    b    n    m    ,    .    /    rsft
+  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
+  lsft @z   x    c    v    b    n    m    ,    .    @fs   rsft
   lctl lalt lmet           @arr           rmet ralt rctl
 )
 
@@ -62,13 +63,17 @@
   lctl lalt lmet           spc            rmet ralt rctl
 )
 
+(deflayer shrink
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    tab  grv  _    _    _    _    bspc del  _    _    _    _    _
+  _    esc  _    _    _    _    _    ret  _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    \    _
+  _    _    _              _              _    _    _
+)
+
 (deflayermap arrows
          i up
   j left k down l right
-)
-
-(deflayermap del
-  bspc del
 )
 
 (deflayermap layers
