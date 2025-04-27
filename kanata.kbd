@@ -11,12 +11,15 @@
 )
 
 (defvar
-  tap-time 150
+  tap-time 25
   hold-time 200
+  tap-dance-time 200
   shift-tap-delay 100
+
   tt $tap-time
   ht $hold-time
   std $shift-tap-delay
+  tdt $tap-dance-time
 )
 
 (defalias
@@ -31,26 +34,22 @@
   arr (tap-hold $tt $ht spc (layer-while-held arrows))
   
   ;; tap-hold actions
-  z (tap-hold-release $tt $ht z (layer-while-held del))
-  a (tap-hold-release $tt $ht a lsft)
+  z (tap-hold-press $tt $ht z (layer-while-held del))
+  a (tap-hold $tt $ht a lsft)
   s (tap-hold-release $tt $ht s lctl)
   d (tap-hold-release $tt $ht d lalt)
   f (tap-hold-release $tt $ht f lmet)
   j (tap-hold-release $tt $ht j rmet)
   k (tap-hold-release $tt $ht k ralt)
   l (tap-hold-release $tt $ht l rctl)
-  ; (tap-hold-release $tt $ht ; rsft)
+  ; (tap-hold $tt $ht ; rsft)
 
-  ;; tap-dance
-  tdg (tap-dance $tt (g (macro lsft $std lsft)))
-  tdh (tap-dance $tt (h (macro rsft $std rsft)))
-  
 )
 
 (deflayer typing
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  @a   @s   @d   @f   @tdg @tdh @j   @k   @l   @;   '    ret
+  esc @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
   lsft @z   x    c    v    b    n    m    ,    .    /    rsft
   lctl lalt lmet           @arr           rmet ralt rctl
 )
