@@ -25,13 +25,12 @@
 (defalias
 
   ;; toggle layer aliases
-  lay (layer-toggle layers)
+  lay (layer-while-held layers)
   ty (layer-switch typing)
   pl (layer-switch playing)
 
   ;; layer switching
   grl (tap-hold-release $ht $ht grv @lay)
-  arr (tap-hold $tt $ht spc (layer-while-held arrows))
   
   ;; tap-hold actions
   z (tap-hold-press $tt $ht z (layer-while-held shrink))
@@ -48,11 +47,11 @@
 )
 
 (deflayer typing
-  @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  lsft @z   x    c    v    b    n    m    ,    .    @fs   rsft
-  lctl lalt lmet           @arr           rmet ralt rctl
+  XX   1    2    3    4    5    6    7    8    9    0    -    =    XX
+  XX   q    w    e    r    t    y    u    i    o    p    [    ]    XX
+  XX   @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    XX
+  XX   @z   x    c    v    b    n    m    ,    .    @fs   XX
+  XX   XX   XX             spc            XX   XX   XX
 )
 
 (deflayer playing
@@ -64,16 +63,11 @@
 )
 
 (deflayer shrink
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    tab  grv  _    _    _    _    bspc del  _    _    _    _    _
-  _    esc  _    _    _    _    _    ret  _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    \    _
-  _    _    _              _              _    _    _
-)
-
-(deflayermap arrows
-         i up
-  j left k down l right
+  _    _    _    _    _    _    _    _    _    _     _    _    _    _
+  _    grv  _    _    lrld @ty  del  bspc up   _     @pl  _    _    _
+  _    tab  _    _    _    _    _    left down right _    ret  _
+  _    esc  _    _    _    _    _    _    _    _     \    _
+  _    _    _              _              _    _     _
 )
 
 (deflayermap layers
