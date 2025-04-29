@@ -28,23 +28,34 @@
   lay (layer-while-held layers)
   ty (layer-switch typing)
   pl (layer-switch playing)
-  shk (layer-while-held shrink)
+  nav (layer-switch navigation)
 
   ;; layer switching
   grl (tap-hold-release $ht $ht grv @lay)
-  spcsk (tap-hold-release $ht $ht spc @shk)
   
+
   ;; tap-hold actions
-  z (tap-hold-press $tt $ht z @shk)
   a (tap-hold-press $tt $ht a lsft)
   s (tap-hold-release $tt $ht s lctl)
   d (tap-hold-release $tt $ht d lalt)
   f (tap-hold-release $tt $ht f lmet)
-  j (tap-hold-release $tt $ht j rmet)
+  j (tap-hold-release $tt $ht j rmet) 
   k (tap-hold-release $tt $ht k ralt)
   l (tap-hold-release $tt $ht l rctl)
   ; (tap-hold-press $tt $ht ; rsft)
-  fs (tap-hold-press $tt $ht / @shk)
+
+  ;; combos
+  cpy M-c   ;; Cmd+c
+  pst M-v   ;; Cmd+v
+  psh M-A-v ;; clipboard history (Cmd+Option+v) 
+  und M-z   ;; Cmd+z
+  red M-S-z ;; Cmd+Shift+z
+  cut M-x   ;; Cmd+x
+  all M-a   ;; Cmd+a
+  qt M-q 
+  ctb M-w 
+  ntb M-t 
+  cmt (tap-dance $tdt (M-tab A-spc))
 
 )
 
@@ -52,8 +63,8 @@
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  XX   @z   x    c    v    b    n    m    ,    .    @fs   XX
-  XX   XX   XX             @spcsk         XX   XX   XX
+  XX   z    x    c    v    b    n    m    ,    .    /    XX
+  XX   XX   XX             spc            @nav  XX   XX
 )
 
 (deflayer playing
@@ -64,12 +75,12 @@
   lctl lalt lmet           spc            rmet ralt rctl
 )
 
-(deflayer shrink
-  _    _    _    _    _    _    _    _    _    _     _    _    _    del
-  _    _    _    _    _    _    _    _    up   _     _    _    _    _
-  _    _    _    _    _    _    _    left down right _    _    _
-  _    _    _    _    _    _    _    _    _    _     _    _
-  _    _    _              _              _    _     _
+(deflayer navigation
+  @grl _    _    _    _    _    _    _    _    _     _    _    _    _
+  @cmt @qt  @ctb @all @red @ntb _    bspc up   del   _    _    _    _
+  esc  lsft lctl lalt lmet _    @psh left down right _    _    _
+  XX   @und @cut @cpy @pst _    _    _    _    _     _    _
+  XX   XX    @ty           _              _    _     _
 )
 
 (deflayermap layers
