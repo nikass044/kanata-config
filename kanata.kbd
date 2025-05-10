@@ -29,20 +29,20 @@
   ty (layer-switch typing)
   pl (layer-switch playing)
   nav (layer-switch navigation)
-  cmd (layer-switch command)
+  fs (layer-switch fkeys)
 
   ;; layer switching
   grl (tap-hold-release $ht $ht grv @lay)
 
   ;; tap-hold actions
-  a (tap-hold-press $tt $ht a lsft)
-  s (tap-hold-release $tt $ht s lctl)
-  d (tap-hold-release $tt $ht d lalt)
-  f (tap-hold-release $tt $ht f lmet)
-  j (tap-hold-release $tt $ht j rmet) 
-  k (tap-hold-release $tt $ht k ralt)
-  l (tap-hold-release $tt $ht l rctl)
-  ; (tap-hold-press $tt $ht ; rsft)
+  a (tap-hold $tt $ht a lsft)
+  s (tap-hold $tt $ht s lctl)
+  d (tap-hold $tt $ht d lalt)
+  f (tap-hold $tt $ht f lmet)
+  j (tap-hold $tt $ht j rmet) 
+  k (tap-hold $tt $ht k ralt)
+  l (tap-hold $tt $ht l rctl)
+  ; (tap-hold $tt $ht ; rsft)
 
   ;; combos
   cpy M-c   ;; Cmd+c
@@ -64,9 +64,9 @@
 (deflayer typing
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  XX   z    x    c    v    b    n    m    ,    .    /    XX
-  XX   XX   XX             spc            @nav @cmd XX
+  esc  a    @s   @d   @f   g    h    @j   @k   @l   ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  XX   XX   XX             spc            @nav @fs  XX
 )
 
 (deflayer playing
@@ -78,25 +78,32 @@
 )
 
 (deflayer navigation
-  @grl _    _    _    _     _    _    _    _     _     _    _    _    _
-  @cmt _    _    M-a  M-S-z _    _    bspc up    del   _    M-[  M-]    _
-  esc  lsft lctl lalt lmet  _    @psh left down  right _    _    _
-  XX   @und @cut @cpy @pst  _    _    _    @plng @nlng _    _
-  XX   XX    @ty            _              @nav  @cmd  _
+  @grl _    _    _    _     _    _    _    _    _     _    _    _    _
+  @cmt _    _    M-a  M-S-z _    _    bspc _    del   _    _    _    _
+  esc  lsft lctl lalt lmet  _    left down up   right _    _    _
+  lsft @und @cut @cpy @pst  _    _    _    _    _     _    rsft
+  XX   XX    @ty            _              @nav  @fs  _
 )
 
-;; todo rewrite as layermap
-(deflayer command
-  @grl _    _    _    _    _    _    _    _    _     _    _    _    _
-  @cmt M-q  M-w  _    M-r  M-t  _    _    _    _     _    _    _    _
-  esc  M-a  _    _    M-f  _    _    _    _    C-spc C-A-spc   _    _
-  XX   M-z  M-x  M-c  M-v  _    _    _    _    _     _    _
-  XX   XX    @ty           _              @nav @cmd  _
+(deflayer fkeys
+  @grl f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
+  tab  _    _    _    _    _    _    _    _    _    _    _    _    _
+  esc  _    @s   @d   @f   _    _    @j   @k   @l   _    _    _
+  lsft _    _    _    _    _    _    _    _    _    _    _
+  XX   XX   @ty            _              @nav _    _
 )
 
 (deflayermap layers
-  t @ty
-  p @pl
+  1 @pl
+  2 @ty
   r lrld
   ret lrld
+)
+
+(deflayer template
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
 )
