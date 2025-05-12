@@ -30,6 +30,7 @@
   pl (layer-switch playing)
   nav (layer-switch navigation)
   fs (layer-switch fkeys)
+  crl (layer-switch control)
 
   ;; layer switching
   grl (tap-hold-release $ht $ht grv @lay)
@@ -44,21 +45,6 @@
   l (tap-hold $tt $ht l rctl)
   ; (tap-hold $tt $ht ; rsft)
 
-  ;; combos
-  cpy M-c   ;; Cmd+c
-  pst M-v   ;; Cmd+v
-  psh M-A-v ;; clipboard history (Cmd+Option+v) 
-  und M-z   ;; Cmd+z
-  ref M-r   ;; Cmd+r
-  cut M-x   ;; Cmd+x
-  all M-a   ;; Cmd+a
-  qt M-q 
-  ctb M-w 
-  ntb M-t 
-  plng C-spc
-  nlng C-A-spc
-  cmt (tap-dance $tdt (M-tab A-spc))
-
 )
 
 (deflayer typing
@@ -66,7 +52,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  a    @s   @d   @f   g    h    @j   @k   @l   ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  XX   XX   XX             spc            @nav @fs  XX
+  @crl XX   XX             spc            @nav @fs  XX
 )
 
 (deflayer playing
@@ -78,11 +64,28 @@
 )
 
 (deflayer navigation
-  @grl _    _    _    _     _    _    _    _    _     _    _    _    _
-  @cmt _    _    M-a  M-S-z _    _    bspc _    del   _    _    _    _
-  esc  lsft lctl lalt lmet  _    left down up   right _    _    _
-  lsft @und @cut @cpy @pst  _    _    _    _    _     _    rsft
-  XX   XX    @ty            _              @nav  @fs  _
+  @grl _    _    _    _    _    _    _    _    _     _    _    _    _
+  tab  _    _    _    _    _    _    bspc _    del   _    _    _    _
+  esc  lsft lctl lalt lmet _    left down up   right _    _    _
+  lsft _    _    _    _    _    _    _    _    _     _    rsft
+  XX   XX   @ty            _              @nav  @fs  _
+)
+
+(deflayermap control
+  j prev
+  k pp
+  l next
+  m mute
+  i volu
+  u voldwn
+  
+  r brup
+  f brdwn
+  e blup
+  d bldn
+
+  grv @grl
+  lmet @ty
 )
 
 (deflayer fkeys
@@ -101,9 +104,14 @@
 )
 
 (deflayer template
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _              _              _    _    _
+  _    _    @ty            _              _    _    _
+)
+
+(deflayermap templatelayermap
+  grv @grl
+  lmet @ty
 )
