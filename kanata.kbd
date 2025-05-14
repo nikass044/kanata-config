@@ -29,12 +29,13 @@
   ty (layer-switch typing)
   pl (layer-switch playing)
   nav (layer-switch navigation)
-  fs (layer-switch fkeys)
   crl (layer-switch control)
+  spcf (layer-while-held fkeys)
+  ntr (layer-switch numtoprow)
 
   ;; layer switching
   grl (tap-hold-release $ht $ht grv @lay)
-
+  
   ;; tap-hold actions
   a (tap-hold $tt $ht a lsft)
   s (tap-hold $tt $ht s lctl)
@@ -52,7 +53,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  a    @s   @d   @f   g    h    @j   @k   @l   ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  @crl XX   XX             spc            @nav @fs  XX
+  @crl XX   XX             spc            @nav @ntr XX
 )
 
 (deflayer playing
@@ -65,10 +66,26 @@
 
 (deflayer navigation
   @grl _    _    _    _    _    _    _    _    _     _    _    _    _
-  tab  _    _    _    _    _    _    bspc _    del   _    _    _    _
+  tab  _    _    _    _    _    _    _    _    _     _    _    _    _
   esc  lsft lctl lalt lmet _    left down up   right _    _    _
   lsft _    _    _    _    _    _    _    _    _     _    rsft
-  XX   XX   @ty            _              @nav  @fs  _
+  XX   XX   @ty            _              @nav XX  _
+)
+
+(deflayer numtoprow
+  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
+  tab  1    2    3    4    5    6    7    8    9    0    -    =    _
+  esc  _    @s   @d   @f   _    _    @j   @k   @l   _    _    _
+  lsft _    _    _    _    _    _    _    _    _    _    _
+  XX   XX   @ty            @spcf               XX   XX   XX
+)
+
+(deflayer fkeys
+  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
+  tab  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
+  esc  _    @s   @d   @f   _    _    @j   @k   @l   _    _    _
+  lsft _    _    _    _    _    _    _    _    _    _    _
+  XX   XX   @ty            @spcf               XX   XX   XX
 )
 
 (deflayermap control
@@ -86,14 +103,6 @@
 
   grv @grl
   lmet @ty
-)
-
-(deflayer fkeys
-  @grl f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
-  tab  _    _    _    _    _    _    _    _    _    _    _    _    _
-  esc  _    @s   @d   @f   _    _    @j   @k   @l   _    _    _
-  lsft _    _    _    _    _    _    _    _    _    _    _
-  XX   XX   @ty            _              @nav _    _
 )
 
 (deflayermap layers
