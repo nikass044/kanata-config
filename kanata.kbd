@@ -1,5 +1,5 @@
 (defcfg
-  process-unmapped-keys yes
+  process-unmapped-keys no
 )
 
 (defsrc
@@ -30,19 +30,20 @@
   pl (layer-switch playing)
   nav (layer-switch navigation)
   crl (layer-switch control)
-  spcf (layer-while-held fkeys)
   ntr (layer-switch numtoprow)
+  ntrh (layer-while-held numtoprow)
 
   ;; layer switching
   grl (tap-hold-release $ht $ht grv @lay)
-  
+  spcn (tap-hold-release $ht $ht spc @ntrh)
+
   ;; tap-hold actions
   a (tap-hold $tt $ht a lsft)
   s (tap-hold $tt $ht s lctl)
-  d (tap-hold $tt $ht d lalt)
+  d (tap-hold-release $tt $ht d lalt)
   f (tap-hold $tt $ht f lmet)
   j (tap-hold $tt $ht j rmet) 
-  k (tap-hold $tt $ht k ralt)
+  k (tap-hold-release $tt $ht k ralt)
   l (tap-hold $tt $ht l rctl)
   ; (tap-hold $tt $ht ; rsft)
 
@@ -51,9 +52,9 @@
 (deflayer typing
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  a    @s   @d   @f   g    h    @j   @k   @l   ;    '    ret
+  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  @crl XX   XX             spc            @nav @ntr XX
+  @crl XX   XX             @spcn          @nav @ntr XX
 )
 
 (deflayer playing
@@ -74,18 +75,10 @@
 
 (deflayer numtoprow
   @grl _    _    _    _    _    _    _    _    _    _    _    _    _
-  tab  1    2    3    4    5    6    7    8    9    0    -    =    _
-  esc  _    @s   @d   @f   _    _    @j   @k   @l   _    _    _
-  lsft _    _    _    _    _    _    _    _    _    _    _
-  XX   XX   @ty            @spcf               XX   XX   XX
-)
-
-(deflayer fkeys
-  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
   tab  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
-  esc  _    @s   @d   @f   _    _    @j   @k   @l   _    _    _
+  esc  1    2    3    4    5    6    7    8    9    0    -    =
   lsft _    _    _    _    _    _    _    _    _    _    _
-  XX   XX   @ty            @spcf               XX   XX   XX
+  XX   XX   @ty            _              XX   XX   XX
 )
 
 (deflayermap control
