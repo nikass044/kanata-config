@@ -1,5 +1,6 @@
 (defcfg
   process-unmapped-keys no
+  concurrent-tap-hold yes
 )
 
 (defsrc
@@ -23,7 +24,6 @@
 )
 
 (defalias
-
   ;; toggle layer aliases
   lay (layer-switch layers)
   ty (layer-switch typing)
@@ -44,7 +44,11 @@
   k (tap-hold-release $tt $ht k ralt)
   l (tap-hold $tt $ht l rctl)
   ; (tap-hold $tt $ht ; rsft)
+)
 
+(defchordsv2
+  (w e) lsft 50 first-release (playing)
+  (i o) lsft 50 first-release (playing)
 )
 
 ;; BEGIN normies mode
@@ -60,7 +64,7 @@
 (deflayer typing
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
+  esc  a    @s   @d   @f   g    h    @j   @k   @l   ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   @crl XX   XX             @spcn          @nav @lay  XX
 )
