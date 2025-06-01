@@ -36,19 +36,14 @@
   spcn (tap-hold-release $ht $ht spc @ntrh)
 
   ;; tap-hold actions
-  a (tap-hold $tt $ht a lsft)
-  s (tap-hold $tt $ht s lctl)
-  d (tap-hold-release $tt $ht d lalt)
-  f (tap-hold $tt $ht f lmet)
-  j (tap-hold $tt $ht j rmet) 
-  k (tap-hold-release $tt $ht k ralt)
-  l (tap-hold $tt $ht l rctl)
-  ; (tap-hold $tt $ht ; rsft)
-)
-
-(defchordsv2
-  (w e) lsft 50 first-release (playing)
-  (i o) lsft 50 first-release (playing)
+  a (tap-hold $tt $ht a lctl)
+  s (tap-hold $tt $ht s lalt)
+  d (tap-hold-release $tt $ht d lmet)
+  f (tap-hold $tt $ht f lsft)
+  j (tap-hold $tt $ht j rsft) 
+  k (tap-hold-release $tt $ht k rmet)
+  l (tap-hold $tt $ht l ralt)
+  ; (tap-hold $tt $ht ; rctl)
 )
 
 ;; BEGIN normies mode
@@ -64,7 +59,7 @@
 (deflayer typing
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  a    @s   @d   @f   g    h    @j   @k   @l   ;    '    ret
+  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   @crl XX   XX             @spcn          @nav @lay  XX
 )
