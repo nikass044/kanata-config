@@ -1,5 +1,5 @@
 (defcfg
-  process-unmapped-keys no
+  process-unmapped-keys yes
   concurrent-tap-hold yes
 )
 
@@ -14,75 +14,78 @@
 (defvar
   tap-time 35
   hold-time 200
-  tap-dance-time 50
-  shift-tap-delay 100
 
   tt $tap-time
   ht $hold-time
-  std $shift-tap-delay
-  tdt $tap-dance-time
 )
 
 (defalias
   ;; toggle layer aliases
   lay (layer-switch layers)
-  ty (layer-switch typing)
-  pl (layer-switch playing)
+  nk (layer-switch nokeeb)
+  kb (layer-switch keeb)
   nav (layer-switch navigation)
   crl (layer-switch control)
   ntrh (layer-while-held numfkeyrow)
 
   ;; layer switching
-  spcn (tap-hold-release $ht $ht spc @ntrh)
+  spc_num_fn (tap-hold-release $ht $ht spc @ntrh)
 
   ;; tap-hold actions
-  a (tap-hold $tt $ht a lctl)
-  s (tap-hold $tt $ht s lalt)
-  d (tap-hold $tt $ht d lmet)
-  f (tap-hold-release $tt $ht f lsft)
-  j (tap-hold-release $tt $ht j rsft) 
-  k (tap-hold $tt $ht k rmet)
-  l (tap-hold $tt $ht l ralt)
-  ; (tap-hold $tt $ht ; rctl)
+  a (tap-hold-release $tt $ht a lsft)
+  s (tap-hold-release $tt $ht s lctl)
+  d (tap-hold-release $tt $ht d lalt)
+  f (tap-hold-release $tt $ht f lmet)
+  j (tap-hold-release $tt $ht j rmet) 
+  k (tap-hold-release $tt $ht k ralt)
+  l (tap-hold-release $tt $ht l rctl)
+  ; (tap-hold-release $tt $ht ; rsft)
 )
 
-(deflayer typing
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  @crl XX   XX             @spcn          @nav @lay  XX
+(deflayermap layers
+  k @kb ;; for for Keeb
+  l @nk ;; for Laptop
+  r lrld ;; reload config
+  ret lrld ;; reload config
 )
 
-;; BEGIN normies mode
-(deflayer playing
+(deflayer keeb
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lalt lmet           spc            rmet @lay rctl
+  lctl lalt lmet           spc            @lay ralt rctl
 )
-;; END normies mode
+
+(deflayer nokeeb
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  @crl XX   @nav        @spc_num_fn       @lay XX   XX
+)
 
 (deflayer navigation
   grv  _    _    _    _    _    _    _    _    _     _    _    _    _
   tab  _    _    _    _    _    _    _    _    _     _    _    _    _
-  @ty  lctl lalt lmet lsft _    left down up   right _    _    _
+  @nk  lctl lalt lmet lsft _    left down up   right _    _    _
   lsft _    _    _    _    _    _    _    _    _     _    rsft
-  XX   XX   XX             XX             @nav XX    _
+  XX   XX   @nav           XX             XX   XX    _
 )
 
 (deflayer numfkeyrow
   grv  _    _    _    _    _    _    _    _    _    _    _    _    _
   tab  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
   esc  1    2    3    4    5    6    7    8    9    0    -    =
-  lsft _    _    _    _    _    _    _    _    _    _    _
+  lsft S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0    _
   XX   XX   XX             XX             XX   XX   XX
 )
 
 (deflayermap control
-  caps @ty
-  esc @ty
+  caps @nk
+  esc @nk
+  lmet @nk
+  spc @nk
   
   j prev
   k pp
@@ -95,27 +98,21 @@
   f brdwn
   e blup
   d bldn
-
-  grv grv 
-  lmet @ty
 )
 
-(deflayermap layers
-  a @pl
-  s @ty
-  r lrld
-  ret lrld
-)
+;;;;;;;;;;;; TEMPLATES ;;;;;;;;;;;;
 
 (deflayer template
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  @ty  _    _    _    _    _    _    _    _    _    _    _    _
+  @nk  _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
 
 (deflayermap templatelayermap
-  caps @ty
-  esc @ty
+  caps @nk
+  esc @nk
 )
+
+;;;;;;;;;;;; TEMPLATES ;;;;;;;;;;;;
