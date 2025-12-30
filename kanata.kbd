@@ -27,7 +27,7 @@
   ntrh (layer-while-held numfkeyrow)
   ;; persistent layers (base layers)
   nk (layer-switch nokeeb)
-  kb (layer-switch keeb)
+  ;; kb (layer-switch keeb)
 
   ;; layer switching
   spc_num_fn (tap-hold-release $ht $ht spc @ntrh)
@@ -51,16 +51,16 @@
   @crl XX   @nav        @spc_num_fn       @lay @nk  XX
 )
 
-; (deflayer keeb
-;   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-;   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-;   esc  a    s    d    f    g    h    j    k    l    ;    '    ret
-;   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-;   lctl lalt lmet           spc            @lay ralt rctl
-; )
+;; (deflayer keeb
+;;   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+;;   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+;;   esc  a    s    d    f    g    h    j    k    l    ;    '    ret
+;;   lsft z    x    c    v    b    n    m    ,    .    /    rsft
+;;   lctl lalt lmet           spc            @lay ralt rctl
+;; )
 
 (deflayermap layers
-  k @kb ;; for for Keeb
+  ;; k @kb ;; for for Keeb
   l @nk ;; for Laptop
   r lrld ;; reload config
   ret lrld ;; reload config
