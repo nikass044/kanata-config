@@ -12,25 +12,25 @@
 )
 
 (defvar
-  tap-time 180
+  quick-tap 180
   hold-time 280
 
-  tt $tap-time
+  tt $quick-tap
   ht $hold-time
 )
 
 (defalias
   ;; held layers (default mode)
   lay (layer-while-held layers)
-  nav (layer-while-held navigation)
+  num (layer-while-held numbers)
   crl (layer-while-held control)
-  ntrh (layer-while-held numfkeyrow)
+  sym (layer-while-held symbols)
   ;; persistent layers (base layers)
-  nk (layer-switch nokeeb)
+  knt (layer-switch kanata)
   ;; kb (layer-switch keeb)
 
   ;; layer switching
-  spc_num_fn (tap-hold-release $ht $ht spc @ntrh)
+  spc_sym (tap-hold-release $ht $ht spc @sym)
 
   ;; tap-hold actions
   a (tap-hold-release $tt $ht a lsft)
@@ -42,57 +42,43 @@
   l (tap-hold-release $tt $ht l rctl)
   ; (tap-hold-release $tt $ht ; lsft)
 
-  ;; shifted key remaps: < → ; | > → : | ; → ' | : → "
-  ;; , (fork , (unshift ;) (lsft rsft))  ;; , normally, ; when shifted (unshift removes the <)
-  ;; . (fork . ; (lsft rsft))            ;; . normally, : when shifted (; becomes : with shift)
-  ;; ;base (fork ' S-' (lsft rsft)) ;; ' normally, " when shifted
-  ;; ; (tap-hold-release $tt $ht @;base rsft)
 )
 
-(deflayer nokeeb
+(deflayer kanata
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  @crl XX   @nav        @spc_num_fn       @lay @nk  XX
+  @crl XX   @num        @spc_sym       @lay @knt  XX
 )
 
-;; (deflayer keeb
-;;   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-;;   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-;;   esc  a    s    d    f    g    h    j    k    l    ;    '    ret
-;;   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-;;   lctl lalt lmet           spc            @lay ralt rctl
-;; )
-
 (deflayermap layers
-  ;; k @kb ;; for for Keeb
-  l @nk ;; for Laptop
+  l @knt ;; for Laptop
   r lrld ;; reload config
   ret lrld ;; reload config
 )
 
-(deflayer navigation
-  grv  _    _    _    _    _    _    _    _    _     _    _    _    _
-  tab  _    _    _    _    _    _    _    _    _     _    _    _    _
-  @nk  lsft lctl lalt lmet _    left down up   right _    _    _
-  lsft _    _    _    _    _    _    _    _    _     _    rsft
-  XX   XX   @nav           XX             @lay XX    _
-)
-
-(deflayer numfkeyrow
+(deflayer numbers
   grv  _    _    _    _    _    _    _    _    _    _    _    _    _
-  tab  S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  _    _    _
-  esc  1    2    3    4    5    6    7    8    9    0    -    =
+  tab  _    _    _    _    _    _    _    _    _    _    _    _    _
+  esc  1    2    3    4    5    6    7    8    9    0    _    _
   lsft _    _    _    _    _    _    _    _    _    _    _
   XX   XX   XX             XX             XX   XX   XX
 )
 
+(deflayer symbols
+  grv  f12  f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  _
+  tab  _    S-1  S-\  =    S-7  S-8  S-5  S-2  S-3  '    grv  _    _
+  esc  [    S-9  S-0  ]    \    S-6  S-4  S-8  S-'  S-;  _    _
+  lsft S--  S-[  S-]  -    S-=  S-grv S-/  S-,  S-.  /    _
+  XX   XX   XX             XX             XX   XX   XX
+)
+
 (deflayermap control
-  caps @nk
-  esc @nk
-  lmet @nk
-  spc @nk
+  caps @knt
+  esc @knt
+  lmet @knt
+  spc @knt
   
   j prev
   k pp
@@ -112,14 +98,14 @@
 (deflayer template
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  @nk  _    _    _    _    _    _    _    _    _    _    _    _
+  @knt _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
 
 (deflayermap templatelayermap
-  caps @nk
-  esc @nk
+  caps @knt
+  esc @knt
 )
 
 ;;;;;;;;;;;; TEMPLATES ;;;;;;;;;;;;
