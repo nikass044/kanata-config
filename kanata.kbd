@@ -44,6 +44,7 @@
   ; (tap-hold-release $tt $ht ; lsft)
   c (tap-hold-release $tt $ht c @arr)
   meh (multi lctl lsft lalt)
+  car0 (tap-hold $tt 160 S-6 0)
 
 )
 
@@ -52,7 +53,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
   lsft z    x    @c   v    b    n    m    ,    .    /    rsft
-  @crl @lay @num        @spc_sym     @meh      @knt  XX
+  @crl @lay @num        @spc_sym     @meh      @crl XX
 )
 
 (deflayermap layers
@@ -70,10 +71,10 @@
 )
 
 (deflayer symbols
-  grv  f12  f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  _
-  tab  S-1  S-\  =    S-7  S-8  S-2  '    S-3  S-5  grv  _    _   _
-  esc  [    S-9  S-0  ]    \    S-6  S-'  S-8  S-4  S-;  _    _
-  lsft S--  S-[  S-]  -    S-=  S-grv S-/  S-,  S-.  /   _
+  grv  f12  f1   f2   f3   f4   f5    f6   f7   f8   f9  f10  f11  _
+  tab  S-1  S-\  =    S-7  S-8  S-3   S-2  S-'  S-5  grv  _    _   _
+  esc  [    S-9  S-0  ]    \    @car0 S-8  '    S-4  S-;  _    _
+  lsft S--  S-[  S-]  -    S-=  S-grv grv S-,  S-.  /   _
   XX   XX   XX             XX             XX   XX   XX
 )
 
@@ -90,18 +91,20 @@
   esc @knt
   lmet @knt
   spc @knt
+
+  w prev
+  e pp 
+  r next
+
+  v mute 
+  x voldwn
+  c volu
+
+  g brup 
+  b brdwn
   
-  j prev
-  k pp
-  l next
-  m mute
-  i volu
-  u voldwn
-  
-  r brup
-  f brdwn
-  e blup
-  d bldn
+  t blup
+  q bldn
 )
 
 ;;;;;;;;;;;; TEMPLATES ;;;;;;;;;;;;
