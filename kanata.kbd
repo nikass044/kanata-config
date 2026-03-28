@@ -55,8 +55,8 @@
 (deflayer kanata
   grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc     @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  @sklsft z    x    @c   v    b    n    m    ,    .    /    @skrsft
+  @sklsft @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    @skrsft
+  esc     z    x    @c   v    b    n    m    ,    .    /    ret
   @crl @lay @num        @spc_sym     @meh      @crl XX
 )
 
