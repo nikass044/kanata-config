@@ -45,6 +45,7 @@
   c (tap-hold-release $tt $ht c @arr)
   sklsft (one-shot 320 lsft)
   skrsft (one-shot 320 rsft)
+  ss @sklsft
   ssnum (tap-hold-release $tt $ht @sklsft @num)
 
   meh (multi lctl lsft lalt)
@@ -58,7 +59,7 @@
   tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc     @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
   @sklsft z    x    @c   v    b    n    m    ,    .    /    @skrsft
-  @lay @crl @ssnum            @spc_sym       @meh @crl XX
+  @lay    @crl @ss            @spc_sym       @meh @crl XX
 )
 
 (deflayermap layers
