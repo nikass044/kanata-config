@@ -91,25 +91,12 @@
   _    _    _              _              _    _     _
 )
 
-(deflayermap control
-  caps @knt
-  esc @knt
-  lmet @knt
-  spc @knt
-
-  w prev
-  e pp 
-  r next
-
-  v mute 
-  x voldwn
-  c volu
-
-  g brup 
-  b brdwn
-  
-  t blup
-  q bldn
+(deflayer control
+  _    _    _      _    _     _     _    _    _    _    _    _    _    _
+  _    blup prev   pp   next  _     _    _    _    _    _    _    _    _    
+  @knt bldn _      _    _     brup  _    _    _    _    _    _    _
+  _    _    voldwn volu mute  brdwn _    _    _    _    _    _    
+  _    _    _              _              _    _    _
 )
 
 ;;;;;;;;;;;; TEMPLATES ;;;;;;;;;;;;
