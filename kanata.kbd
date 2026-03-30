@@ -43,8 +43,9 @@
   l (tap-hold-release $tt $ht l rctl)
   ; (tap-hold-release $tt $ht ; lsft)
   c (tap-hold-release $tt $ht c @arr)
-  sklsft (one-shot 220 lsft)
-  skrsft (one-shot 220 rsft)
+  sklsft (one-shot 320 lsft)
+  skrsft (one-shot 320 rsft)
+  ssnum (tap-hold-release $tt $ht @sklsft @num)
 
   meh (multi lctl lsft lalt)
 
@@ -55,9 +56,9 @@
 (deflayer kanata
   grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @sklsft @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    @skrsft
-  esc     z    x    @c   v    b    n    m    ,    .    /    ret
-  @crl @lay @num        @spc_sym     @meh      @crl XX
+  esc     @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
+  @sklsft z    x    @c   v    b    n    m    ,    .    /    @skrsft
+  @lay @crl @ssnum            @spc_sym       @meh @crl XX
 )
 
 (deflayermap layers
