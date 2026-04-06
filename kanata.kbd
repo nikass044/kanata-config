@@ -42,24 +42,20 @@
   k (tap-hold-release $tt $ht k ralt)
   l (tap-hold-release $tt $ht l rctl)
   ; (tap-hold-release $tt $ht ; lsft)
-  c (tap-hold-release $tt $ht c @arr)
-  sklsft (one-shot 320 lsft)
-  skrsft (one-shot 320 rsft)
-  ss @sklsft
-  ssnum (tap-hold-release $tt $ht @sklsft @num)
+  v (tap-hold-release $tt $ht v @arr)
+  ss (one-shot 320 lsft)
 
   meh (multi lctl lsft lalt)
 
   car0 (tap-hold $tt 160 S-6 0)
-
 )
 
 (deflayer kanata
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  lsft z    x    @c   v    b    n    m    ,    .    /    rsft
-  @lay @crl @ss            @spc_sym       @meh @crl XX
+  grv    1    2    3    4    5    6    7    8    9    0    -    =    esc
+  tab    q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc    @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
+  bspc   z    x    c    @v   b    n    m    ,    .    /    A-bspc
+  @lay   @crl @ss            @spc_sym       @meh @crl XX
 )
 
 (deflayermap layers
@@ -69,18 +65,18 @@
 )
 
 (deflayer numbers
-  grv  _    _    _    _    _    _    _    _    _    _    _    _    _
-  tab  _    _    _    _    _    _    _    _    _    _    _    _    _
-  esc  1    2    3    4    5    6    7    8    9    0    _    _
-  lsft _    _    _    _    _    _    _    _    _    _    _
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+  _   1    2    3    4    5    6    7    8    9    0    _    _
+  _   _    _    _    _    _    _    _    _    _    _    _
   XX   XX   XX             XX             XX   XX   XX
 )
 
 (deflayer symbols
-  grv  f12  f1   f2   f3   f4   f5    f6   f7   f8   f9  f10  f11  _
-  tab  S-1  S-\  =    S-7  S-8  S-3   S-2  S-'  S-5  grv  _    _   _
-  esc  [    S-9  S-0  ]    \    @car0 S-8  '    S-4  S-;  _    _
-  lsft S--  S-[  S-]  -    S-=  S-grv grv S-,  S-.  /   _
+  _    f12  f1   f2   f3   f4   f5    f6   f7   f8   f9  f10  f11  _
+  _    S-1  S-\  =    S-7  S-8  S-3   S-2  S-'  S-5  grv  _    _   _
+  _    [    S-9  S-0  ]    \    @car0 S-8  '    S-4  S-;  _    _
+  _    S--  S-[  S-]  -    S-=  S-grv grv S-,  S-.  /   _
   XX   XX   XX             XX             XX   XX   XX
 )
 
