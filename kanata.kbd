@@ -14,9 +14,23 @@
 (defvar
   quick-tap 180
   hold-time 280
+  chord-time 25
 
   tt $quick-tap
   ht $hold-time
+)
+
+(defchordsv2
+  (s f) M-S-spc $chord-time all-released ()
+  (j l) C-A-spc $chord-time all-released ()
+
+  (e r) M-A-v $chord-time all-released ()
+
+  (x c) M-c $chord-time all-released ()
+  (c v) M-v $chord-time all-released ()
+  (x v) M-x $chord-time all-released ()
+
+  (c l) caps $chord-time all-released ()
 )
 
 (defalias
@@ -51,7 +65,7 @@
 )
 
 (deflayer kanata
-  grv    1    2    3    4    5    6    7    8    9    0    -    =    esc
+  grv    1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab    q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc    @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
   bspc   z    x    c    @v   b    n    m    ,    .    /    A-bspc
@@ -82,7 +96,7 @@
 
 (deflayer arrows
   _    _    _    _    _    _    _    _    _    _     _    _    _    _
-  _    _    _    _    _    _    _    _    _    _     _    _    _    _
+  _    _    _    _    _    _    _    _    bspc _     _    _    _    _
   @knt lsft lctl lalt lmet _    left down up   right _    _    _
   _    _    _    _    _    _    _    _    _    _     _    _
   _    _    _              _              _    _     _
