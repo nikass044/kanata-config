@@ -55,16 +55,22 @@
 
   ;; tap-hold actions
   e (tap-hold-release-keys $tt $ht e @sym $lk)
+  v (tap-hold-release-keys $tt $ht v @arr $lk)
+
   i (tap-hold-release-keys $tt $ht i @sym $rk)
-  a (tap-hold-release $tt $ht a lsft)
-  s (tap-hold-release $tt $ht s lctl)
-  d (tap-hold-release $tt $ht d lalt)
-  f (tap-hold-release $tt $ht f lmet)
-  j (tap-hold-release $tt $ht j rmet)
-  k (tap-hold-release $tt $ht k ralt)
-  l (tap-hold-release $tt $ht l rctl)
-  ; (tap-hold-release $tt $ht ; lsft)
-  v (tap-hold-release $tt $ht v @arr)
+  m (tap-hold-release-keys $tt $ht m @crl $rk)
+
+  a (tap-hold-release-keys $tt $ht a lsft $lk)
+  s (tap-hold-release-keys $tt $ht s lctl $lk)
+  d (tap-hold-release-keys $tt $ht d lalt $lk)
+  f (tap-hold-release-keys $tt $ht f lmet $lk)
+
+  j (tap-hold-release-keys $tt $ht j rmet $rk)
+  k (tap-hold-release-keys $tt $ht k ralt $rk)
+  l (tap-hold-release-keys $tt $ht l rctl $rk)
+  ; (tap-hold-release-keys $tt $ht ; lsft $rk)
+
+
   ss (one-shot-press $one-shot-time lsft)
 
   meh (multi lctl lsft lalt)
@@ -73,11 +79,11 @@
 )
 
 (deflayer kanata
-  grv    1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab    q    w    @e   r    t    y    u    @i   o    p    [    ]    \
-  esc    @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  @sym_os z    x    c    @v   b    n    m    ,    .    /    @sym_os
-  @lay   @crl @ss            @spc_sym       @meh @sym_os XX
+  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab     q    w    @e   r    t    y    u    @i   o    p    [    ]    \
+  esc     @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
+  @sym_os z    x    c    @v   b    n    @m   ,    .    /    @sym_os
+  @lay    @crl @ss            @spc_sym       @meh @sym_os XX
 )
 
 (deflayermap layers
