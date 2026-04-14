@@ -15,6 +15,11 @@
   quick-tap 180
   hold-time 280
   chord-time 25
+  one-shot-time 320
+
+  ;; key groups
+  lk (q w e r t a s d f g z x c v b 1 2 3 4 5 6)
+  rk (y u i o p h j k l ; ' n m , . / [ ] \ 7 8 9 0 - =)
 
   tt $quick-tap
   ht $hold-time
@@ -46,8 +51,11 @@
 
   ;; layer switching
   spc_sym (tap-hold-release $ht $ht spc @sym)
+  sym_os (one-shot-press $one-shot-time @sym)
 
   ;; tap-hold actions
+  e (tap-hold-release-keys $tt $ht e @sym $lk)
+  i (tap-hold-release-keys $tt $ht i @sym $rk)
   a (tap-hold-release $tt $ht a lsft)
   s (tap-hold-release $tt $ht s lctl)
   d (tap-hold-release $tt $ht d lalt)
@@ -57,7 +65,7 @@
   l (tap-hold-release $tt $ht l rctl)
   ; (tap-hold-release $tt $ht ; lsft)
   v (tap-hold-release $tt $ht v @arr)
-  ss (one-shot 320 lsft)
+  ss (one-shot-press $one-shot-time lsft)
 
   meh (multi lctl lsft lalt)
 
@@ -66,10 +74,10 @@
 
 (deflayer kanata
   grv    1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab    q    w    e    r    t    y    u    i    o    p    [    ]    \
+  tab    q    w    @e   r    t    y    u    @i   o    p    [    ]    \
   esc    @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  bspc   z    x    c    @v   b    n    m    ,    .    /    A-bspc
-  @lay   @crl @ss            @spc_sym       @meh @crl XX
+  @sym_os z    x    c    @v   b    n    m    ,    .    /    @sym_os
+  @lay   @crl @ss            @spc_sym       @meh @sym_os XX
 )
 
 (deflayermap layers
@@ -91,12 +99,12 @@
   _    S-1  S-\  =    S-7  S-8  S-3   S-2  S-'  S-5  grv  _    _   _
   _    [    S-9  S-0  ]    \    @car0 S-8  '    S-4  S-;  _    _
   _    S--  S-[  S-]  -    S-=  S-grv grv S-,  S-.  /   _
-  XX   XX   XX             XX             XX   XX   XX
+  _    _    _              _              _    _    _
 )
 
 (deflayer arrows
   _    _    _    _    _    _    _    _    _    _     _    _    _    _
-  _    _    _    _    _    _    _    _    bspc _     _    _    _    _
+  _    _    _    _    _    _    M-[  _    bspc M-]   _    _    _    _
   @knt lsft lctl lalt lmet _    left down up   right _    _    _
   _    _    _    _    _    _    _    _    _    _     _    _
   _    _    _              _              _    _     _
