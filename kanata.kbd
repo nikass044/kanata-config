@@ -40,7 +40,6 @@
 
 (defalias
   ;; held layers (default mode)
-  lay (layer-while-held layers)
   num (layer-while-held numbers)
   crl (layer-while-held control)
   sym (layer-while-held symbols)
@@ -83,13 +82,7 @@
   tab     q    w    @e   r    t    y    u    @i   o    p    [    ]    \
   esc     @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
   @sym_os z    x    c    @v   b    n    @m   ,    .    /    @sym_os
-  @lay    @crl @ss            @spc_sym       @meh @sym_os XX
-)
-
-(deflayermap layers
-  l @knt ;; for Laptop
-  r lrld ;; reload config
-  ret lrld ;; reload config
+  XX      @crl @ss            @spc_sym       @meh @sym_os XX
 )
 
 (deflayer numbers
@@ -118,7 +111,7 @@
 
 (deflayer control
   _    _    _      _    _     _     _    _    _    _    _    _    _    _
-  _    blup prev   pp   next  _     _    _    _    _    _    _    _    _    
+  _    blup prev   pp   next  lrld  _    _    _    _    _    _    _    _    
   @knt bldn _      _    _     brup  _    _    _    _    _    _    _
   _    _    voldwn volu mute  brdwn _    _    _    _    _    _    
   _    _    _              _              _    _    _
