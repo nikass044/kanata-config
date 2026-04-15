@@ -20,9 +20,6 @@
   ;; key groups
   lk (q w e r t a s d f g z x c v b 1 2 3 4 5 6)
   rk (y u i o p h j k l ; ' n m , . / [ ] \ 7 8 9 0 - =)
-
-  tt $quick-tap
-  ht $hold-time
 )
 
 (defchordsv2
@@ -49,39 +46,39 @@
   ;; kb (layer-switch keeb)
 
   ;; layer switching
-  spc_sym (tap-hold-release $ht $ht spc @sym)
+  spc_sym (tap-hold-release $quick-tap $hold-time spc @sym)
   sym_os (one-shot-press $one-shot-time @sym)
 
   ;; tap-hold actions
-  e (tap-hold-release-keys $tt $ht e @sym $lk)
-  v (tap-hold-release-keys $tt $ht v @arr $lk)
+  e (tap-hold-release-keys $quick-tap $hold-time e @sym $lk)
+  w (tap-hold-release $quick-tap $hold-time w @arr)
 
-  i (tap-hold-release-keys $tt $ht i @sym $rk)
-  m (tap-hold-release-keys $tt $ht m @crl $rk)
+  i (tap-hold-release-keys $quick-tap $hold-time i @sym $rk)
+  o (tap-hold-release-keys $quick-tap $hold-time o @crl $rk)
 
-  a (tap-hold-release-keys $tt $ht a lsft $lk)
-  s (tap-hold-release-keys $tt $ht s lctl $lk)
-  d (tap-hold-release-keys $tt $ht d lalt $lk)
-  f (tap-hold-release-keys $tt $ht f lmet $lk)
+  a (tap-hold-release $quick-tap $hold-time a lsft)
+  s (tap-hold-release $quick-tap $hold-time s lctl)
+  d (tap-hold-release $quick-tap $hold-time d lalt)
+  f (tap-hold-release $quick-tap $hold-time f lmet)
 
-  j (tap-hold-release-keys $tt $ht j rmet $rk)
-  k (tap-hold-release-keys $tt $ht k ralt $rk)
-  l (tap-hold-release-keys $tt $ht l rctl $rk)
-  ; (tap-hold-release-keys $tt $ht ; lsft $rk)
+  j (tap-hold-release $quick-tap $hold-time j rmet)
+  k (tap-hold-release $quick-tap $hold-time k ralt)
+  l (tap-hold-release $quick-tap $hold-time l rctl)
+  ; (tap-hold-release $quick-tap $hold-time ; lsft)
 
 
   ss (one-shot-press $one-shot-time lsft)
 
   meh (multi lctl lsft lalt)
 
-  car0 (tap-hold $tt 160 S-6 0)
+  car0 (tap-hold $quick-tap 160 S-6 0)
 )
 
 (deflayer kanata
   grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab     q    w    @e   r    t    y    u    @i   o    p    [    ]    \
+  tab     q    @w   @e   r    t    y    u    @i   @o   p    [    ]    \
   esc     @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  @sym_os z    x    c    @v   b    n    @m   ,    .    /    @sym_os
+  @sym_os z    x    c    v    b    n    m    ,    .    /    @sym_os
   XX      @crl @ss            @spc_sym       @meh @sym_os XX
 )
 
