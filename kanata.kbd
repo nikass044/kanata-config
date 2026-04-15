@@ -46,7 +46,8 @@
   ;; kb (layer-switch keeb)
 
   ;; layer switching
-  spc_sym (tap-hold-release $quick-tap $hold-time spc @sym)
+  meh (multi lctl lsft lalt)
+  spc_meh (tap-hold-release $quick-tap $hold-time spc @meh)
   sym_os (one-shot-press $one-shot-time @sym)
 
   ;; tap-hold actions
@@ -66,20 +67,17 @@
   l (tap-hold-release $quick-tap $hold-time l rctl)
   ; (tap-hold-release $quick-tap $hold-time ; lsft)
 
-
   ss (one-shot-press $one-shot-time lsft)
-
-  meh (multi lctl lsft lalt)
 
   car0 (tap-hold $quick-tap 160 S-6 0)
 )
 
 (deflayer kanata
-  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab     q    @w   @e   r    t    y    u    @i   @o   p    [    ]    \
-  esc     @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  @sym_os z    x    c    v    b    n    m    ,    .    /    @sym_os
-  XX      @crl @ss            @spc_sym       @meh @sym_os XX
+  grv     1    2    3    4    5    6    7    8       9    0    -    =    bspc
+  tab     q    @w   @e   r    t    y    u    @i      @o   p    [    ]    \
+  esc     @a   @s   @d   @f   g    h    @j   @k      @l   @;   '    ret
+  @sym_os z    x    c    v    b    n    m    ,       .    /    @sym_os
+  XX      @crl @ss            @spc_meh       @sym_os XX   XX
 )
 
 (deflayer numbers
